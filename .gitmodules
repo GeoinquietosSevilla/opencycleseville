@@ -1,0 +1,3 @@
+[submodule "javascripts/leaflet-layer-overpass"]
+	path = javascripts/leaflet-layer-overpass
+	url = https://github.com/kartenkarsten/leaflet-layer-overpass.git

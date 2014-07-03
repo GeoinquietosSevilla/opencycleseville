@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Opencycleseville : Project to show the imports Sevici results" />
 
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <title>Opencycleseville</title>
   </head>
 
@@ -20,7 +21,6 @@
           <h2 id="project_tagline">Proyecto para mostrar los resultados de importación de Sevici</h2>
         </header>
     </div>
-
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
@@ -29,8 +29,8 @@
         <p>Todo comenzó al enterarnos de que la empresa <a href="https://developer.jcdecaux.com/#/opendata/vls?page=static&contract=Seville">JCDecaux</a> publicó en su portal de OpenData la localización de todas las paradas de las estaciones de Sevici en Sevilla. Lo primero que realizamos fue un estudio de la <a href="https://developer.jcdecaux.com/#/opendata/license">licencia</a> para ver si nos permitía incomporar esos datos que habían liberados a OpenStreetMap. Al ver que cumplía el estándar CC-BY 2.0, que nos permite emplear los datos siempre y cuando hagamos referencia del origen de los mismos, nos propusimos a definir una metodología para realizar la importación.
         </p>
         <h3>Importación</h3>
-        <p>De cara a organizarnos mejor la forma de comunicarnos ha sido mediante la lista de desarrollo de Geoinquietos Sevilla, de manera que cualquier duda sobre cómo organizarnos la resolvíamos por ahí.</p>
-        <p>Lo primero que hicimos fue definir en lá wiki de Geoinquietos Sevilla un apartado específico que nos sirviera de referencia a la hora de ponernos a importar las paradas, en el que especificáramos los participantes en la iniciativa, la repartición de las paradas entre los mismos, así como el compendio de etiquetas preparadas para introducir con cada parada.</p>
+        <p>De cara a organizarnos mejor la forma de comunicarnos ha sido mediante la lista de desarrollo de <a href="http://wiki.osgeo.org/wiki/Geoinquietos_Sevilla">Geoinquietos Sevilla</a>, de manera que cualquier duda sobre cómo organizarnos la resolvíamos por ahí.</p>
+        <p>Lo primero que hicimos fue definir en lá wiki de Geoinquietos Sevilla un <a href="http://wiki.osgeo.org/wiki/Grupo_OSM#Estaciones_Sevici_.28JCDecaux.29">apartado</a> específico que nos sirviera de referencia a la hora de ponernos a importar las paradas, en el que especificáramos los participantes en la iniciativa, la repartición de las paradas entre los mismos, así como el compendio de etiquetas preparadas para introducir con cada parada.</p>
         <p>Posteriormente procedimos a realizar un estudio de las etiquetas adecuadas para añadir a cada una de las paradas, de manera que estuvieran bien definidas y especificadas, atendiendo a los datos de los que disponíamos. Por tanto acordamos que estas etiquetas fueran:</p>
         <ul>
           <li>amenity = bicycle_rental</li>
@@ -53,12 +53,13 @@
           <li>source = JCDecaux</li>
           <li>source:url = https://developer.jcdecaux.com/#/opendata</li>
         </ul>
-        <p>Una vez que tuvimos definida la forma en la que debíamos importar cada una de las paradas, comenzamos a importarlas mediante la herramienta de edición de datos OSM, JOSM.</p>
-        <p>El proceso que seguimos fue cargar un plugin para poder cargar un CSV en JOSM fue ir seleccionando una a una la parada a importar, añadiéndole las etiquetas especificadas anteriormente y subiéndolas a OSM.</p>
-        <p>La información para rellenar las etiquetas las fuimos sacando del fichero que nos descargamos desde la página de OpenData de JCDecaux, a excepción de número de bornetas totales que lo hemos tenido que ir recogiendo de la propia página web de Sevici.</p>
+        <p>Una vez que tuvimos definida la forma en la que debíamos importar cada una de las paradas, comenzamos a importarlas mediante la herramienta de edición de datos OSM, <a href="https://josm.openstreetmap.de/">JOSM</a>.</p>
+        <p>El proceso que seguimos fue añadir un <a href="http://wiki.openstreetmap.org/wiki/JOSM/Plugins/OpenData">opendata plugin</a> para poder cargar un CSV en JOSM fue ir seleccionando una a una la parada a importar, añadiéndole las etiquetas especificadas anteriormente y subiéndolas a OSM.</p>
+        <p>La información para rellenar las etiquetas las fuimos sacando del fichero que nos descargamos desde la página de OpenData de JCDecaux, a excepción de número de bornetas totales que lo hemos tenido que ir recogiendo de la propia página <a href="http://www.sevici.es/Estaciones/Todas-las-estaciones">web de Sevici.</a></p>
         <h3>Resultados</h3>
         <p>Los resutlados que hemos obtenidos se corresponden con todas y cada unas de las paradas de Sevici, con la ventaja frente a la fuente de datos mencionada anteriormente, de que tenemos las paradas bien localizadas, ya que se ha respetado la localización de las paradas que estuviesen ya dadas de alta en OSM.</p>
         <h4>Mapa de resultados de la importación</h4>
+        <div id="map_results" style="height: 300px"></div>
         <p>El primer análisis que podemos realizar con estos datos es la diferencia entre la localización de las paradas de JCDecaux frente a la localización de las paradas de OSM.</p>
         <h4>Mapa comparativo de las paradas</h4>
         <p>Otro de los análisis que podemos hacer es la comparación del número de paradas por distritos por barrios, de manera que podamos tener una orientación de la distribución geográfica de cada una de las paradas. Qué barrios tienen menos recursos para acceder a la bicicleta e incluso qué barrios disponen de un número mayor de bicicletas, atendiendo al número total de bornetas disponibles.</p>
@@ -74,4 +75,8 @@
       </footer>
     </div>
   </body>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="javascripts/main.js"></script>
+  <script src="javascripts/leaflet-layer-overpass/OverPassLayer.js"></script>
 </html>
