@@ -26,5 +26,8 @@ function initMap() {
 	        }	
 	    }
 	}).addTo(map);
+
+	var map_diff = L.map('map_diff').setView([37.37, -5.963333], 12);
+	var map_zones = L.map('map_zones').setView([37.37, -5.963333], 12);
 }
 window.onload = initMap;
